@@ -69,4 +69,5 @@ $(function() {
   jekyllBootstrapDoc.buildSideMenu();
   jekyllBootstrapDoc.addHeadingAnchors();
   jekyllBootstrapDoc.enableBootbox();
+  $('div.tables-start').nextUntil('div.tables-end', 'table').addClass('table table-bordered table-striped');
 });

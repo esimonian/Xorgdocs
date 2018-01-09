@@ -1,0 +1,78 @@
+<%= ERB.new(File.read(File.expand_path("_header.erb",File.dirname(file)))).result(binding) -%>
+
+[LightDM]
+start-default-seat=true
+greeter-user=lightdm
+minimum-vt=7
+autologin-in-background=true
+log-directory=/var/log/lightdm
+run-directory=/run/lightdm
+
+[Seat:*]
+xserver-command=X -background none
+user-session=plasma
+
+<% if @class == 'rennode' %>
+[Seat:seat0]
+xserver-command=/usr/lib/xorg/Xorg0 -isolateDevice PCI:<%= @pcid_decimal[0] %>:0:0
+xserver-layout=seat0
+autologin-user=plow
+autologin-user-timeout=0
+autologin-guest=false
+user-session=plasma
+<% else  %>
+[Seat:seat0]
+xserver-command=/usr/lib/xorg/Xorg0 -isolateDevice PCI:<%= @pcid_decimal[0] %>:0:0
+greeter-hide-users=true
+xserver-layout=seat0
+<% end %>
+
+<% if @video_card_count > 1 %>
+[Seat:seat1]
+xserver-command=/usr/lib/xorg/Xorg1 -isolateDevice PCI:<%= @pcid_decimal[1] %>:0:0
+xserver-layout=seat1
+autologin-user=plow
+autologin-user-timeout=10
+autologin-guest=false
+user-session=plasma
+<% end %>
+
+<% if @video_card_count > 2 %>
+[Seat:seat2]
+xserver-command=/usr/lib/xorg/Xorg2 -isolateDevice PCI:<%= @pcid_decimal[2] %>:0:0
+xserver-layout=seat2
+autologin-user=plow
+autologin-user-timeout=20
+autologin-guest=false
+user-session=plasma
+<% end %>
+
+<% if @video_card_count > 3 %>
+[Seat:seat3]
+xserver-command=/usr/lib/xorg/Xorg3 -isolateDevice PCI:<%= @pcid_decimal[3] %>:0:0
+xserver-layout=seat3
+autologin-user=plow
+autologin-user-timeout=20
+autologin-guest=false
+user-session=plasma
+<% end %>
+
+<% if @video_card_count > 4 %>
+[Seat:seat4]
+xserver-command=/usr/lib/xorg/Xorg4 -isolateDevice PCI:<%= @pcid_decimal[4] %>:0:0
+xserver-layout=seat4
+autologin-user=plow
+autologin-user-timeout=0
+autologin-guest=false
+user-session=plasma
+<% end %>
+
+<% if @video_card_count > 5 %>
+[Seat:seat5]
+xserver-command=/usr/lib/xorg/Xorg5 -isolateDevice PCI:<%= @pcid_decimal[5] %>:0:0
+xserver-layout=seat5
+autologin-user=plow
+autologin-user-timeout=0
+autologin-guest=false
+user-session=plasma
+<% end %>

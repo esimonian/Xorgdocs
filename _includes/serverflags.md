@@ -1,0 +1,3 @@
+In addition to options specific to this section (described below), the **ServerFlags** section is used to specify some global Xorg server options. All of the entries in this section are **Options**, although for compatibility purposes some of the old style entries are still recognised. Those old style entries are not documented here, and using them is discouraged. The **ServerFlags** section is optional, as are the entries that may be specified in it.
+
+**Options** specified in this section (with the exception of the **"DefaultServerLayout" Option**) may be overridden by **Options** specified in the active ServerLayout section. Options with command line equivalents are overridden when their command line equivalent is used. The options recognised by this section are: 
