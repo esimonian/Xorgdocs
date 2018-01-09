@@ -6,8 +6,22 @@ FontPath | "path"  | A comma separated list of font path elements which the Xorg
 ModulePath | "path" | A comma separated list of directories which the Xorg server searches for loadable modules loading in the order specified. Multiple ModulePath entries may be specified, and they will be concatenated to build the module search path used by the server. The default module path is /usr/lib/xorg/modules
 XkbDir | "path" | Sets the base directory for keyboard layout files. The −xkbdir command line option can be used to override this. The default directory is /usr/share/X11/xkb
 
+```
+# Let X.Org know about the custom font directories
+Section "Files"
+    FontPath    "/usr/share/fonts/100dpi"
+    FontPath    "/usr/share/fonts/75dpi"
+    FontPath    "/usr/share/fonts/cantarell"
+    FontPath    "/usr/share/fonts/cyrillic"
+    FontPath    "/usr/share/fonts/encodings"
+    FontPath    "/usr/share/fonts/misc"
+    FontPath    "/usr/share/fonts/truetype"
+    FontPath    "/usr/share/fonts/TTF"
+    FontPath    "/usr/share/fonts/util"
+EndSection
+```
 
-Catalogue directories:
+<h2 id="catalogue-directories">Catalogue directories</h2>
 
 Catalogue directories can be specified using the prefix catalogue: before the directory name. The directory can then be populated with symlinks pointing to the real font directories, using the following syntax in the symlink name:
 
@@ -19,7 +33,7 @@ where <identifier> is an alphanumeric identifier, [attribute] is an attribute wh
 gscript:pri=60 -> /usr/share/fonts/default/ghostscript
 misc:unscaled:pri=10 −> /usr/share/X11/fonts/misc
 
-Font server identifiers:
+<h2 id="font-server">Font server identifiers</h2>
 
 Font server identifiers have the form:
 

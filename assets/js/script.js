@@ -70,4 +70,11 @@ $(function() {
   jekyllBootstrapDoc.addHeadingAnchors();
   jekyllBootstrapDoc.enableBootbox();
   $('div.tables-start').nextUntil('div.tables-end', 'table').addClass('table table-bordered table-striped');
+  $('body').flowtype({
+     minimum   : 500,
+     maximum   : 1200,
+     minFont   : 12,
+     maxFont   : 36,
+     fontRatio : 30
+    });
 });
